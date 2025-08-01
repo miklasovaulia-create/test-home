@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грибы - FreshHarvest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            margin: 0 0.5rem;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #4CAF50;
+            border-radius: 4px;
+        }
+        
+        .product-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Стили для приветственного блока */
+        .mushroom-welcome {
+            margin-bottom: 3rem;
+        }
+        
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .welcome-title {
+            font-size: 2.3rem;
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: #f8f9f7;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            color: #2e7d32;
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Стили для предупреждения */
+        .warning {
+            background-color: #ffebee;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #f44336;
+        }
+        
+        .warning h3 {
+            color: #d32f2f;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Стили для карточек товаров */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #f44336;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 0.8rem;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-rating {
+            color: #FFA000;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .btn {
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3d8b40;
+        }
+        
+        .btn-secondary {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+            
+            nav a {
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Логотип FreshHarvest" class="logo">
+        <div class="header-text">
+            <h1>Яблочный мир</h1>
+            <p>Свежие продукты для здорового питания</p>
+        </div>
+    </header>
+    
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="fruits.html">Фрукты</a>
+        <a href="vegetables.html">Овощи</a>
+        <a href="mushrooms.html">Грибы</a>
+        <a href="nutrition.html">О питании</a>
+    </nav>
+    
+    <main class="product-page">
+        <div class="mushroom-welcome">
+            <div class="welcome-header">
+                <h2 class="welcome-title">Добро пожаловать в мир лесных грибов!</h2>
+                <p class="welcome-subtitle">Свежие грибы, собранные в экологически чистых лесах, для вашего стола</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🍄</div>
+                    <h3 class="feature-title">Отборные грибы</h3>
+                    <p>Только свежие и проверенные лесные грибы</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌲</div>
+                    <h3 class="feature-title">Экологически чисто</h3>
+                    <p>Собраны в чистых лесных массивах</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3 class="feature-title">Польза для здоровья</h3>
+                    <p>Богаты белком, витаминами и минералами</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3 class="feature-title">Кулинарные идеи</h3>
+                    <p>Рецепты и советы по приготовлению</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="warning">
+            <h3>Важно!</h3>
+            <p>Покупайте грибы только у проверенных поставщиков. Не собирайте неизвестные грибы в лесу! Все наши грибы проходят строгий контроль качества.</p>
+        </div>
+        
+        <h2 style="text-align: center; margin: 2rem 0; color: #2e7d32;">Наши лесные грибы</h2>
+        
+        <div class="product-grid">
+            <!-- Карточка шампиньонов -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="champignons.jpg" alt="Свежие шампиньоны" class="product-image">
+                    <span class="product-badge">Популярный</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Шампиньоны свежие</h3>
+                    <p class="product-description">Нежные ароматные шампиньоны с плотной мякотью. Идеальны для жарки, супов и грибных соусов.</p>
+                    <div class="product-price">290 ₽/кг</div>
+                    <div class="product-meta">
+                        <span>В наличии: 15 кг</span>
+                        
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">В корзину</button>
+                        <button class="btn btn-secondary">В избранное</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка белых грибов -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="white mushroom.jpg" alt="Белые грибы" class="product-image">
+                    <span class="product-badge">Премиум</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Белые грибы</h3>
+                    <p class="product-description">Король грибов с насыщенным ароматом и непревзойденным вкусом. Для настоящих гурманов.</p>
+                    <div class="product-price">850 ₽/кг</div>
+                    <div class="product-meta">
+                        <span>В наличии: 5 кг</span>
+                        
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">В корзину</button>
+                        <button class="btn btn-secondary">В избранное</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка лисичек -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="chanterelles.jpg" alt="Лисички" class="product-image">
+                    <span class="product-badge">Сезонный</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Лисички свежие</h3>
+                    <p class="product-description">Яркие ароматные лисички с легкой кислинкой. Отлично подходят для жарки с луком и сметаной.</p>
+                    <div class="product-price">620 ₽/кг</div>
+                    <div class="product-meta">
+                        <span>В наличии: 8 кг</span>
+                        
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">В корзину</button>
+                        <button class="btn btn-secondary">В избранное</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка вешенок -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="oyster mushrooms.jpg" alt="Вешенки" class="product-image">
+                    <span class="product-badge">Акция</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Вешенки свежие</h3>
+                    <p class="product-description">Нежные вешенки с мягким вкусом. Богаты белком и витаминами группы B.</p>
+                    <div class="product-price">320 ₽/кг</div>
+                    <div class="product-meta">
+                        <span>В наличии: 12 кг</span>
+                        
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">В корзину</button>
+                        <button class="btn btn-secondary">В избранное</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Яблочный мир. Все права защищены.</p>
+    </footer>
+</body>
+</html>

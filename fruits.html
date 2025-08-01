@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фрукты - Яблочный мир</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            margin: 0 0.5rem;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #4CAF50;
+            border-radius: 4px;
+        }
+        
+        .product-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Стили для приветственного блока */
+        .fruit-welcome {
+            margin-bottom: 3rem;
+        }
+        
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .welcome-title {
+            font-size: 2.3rem;
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: #f8f9f7;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            color: #2e7d32;
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Стили для карточек товаров */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #f44336;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 0.8rem;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-rating {
+            color: #FFA000;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .btn {
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3d8b40;
+        }
+        
+        .btn-secondary {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+            
+            nav a {
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+        <img src="logo.png" alt="Логотип FreshHarvest" class="logo">
+        <div class="header-text">
+            <h1>Яблочный мир</h1>
+            <p>Свежие продукты для здорового питания</p>
+        </div>
+    </header>
+    
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="fruits.html">Фрукты</a>
+        <a href="vegetables.html">Овощи</a>
+        <a href="mushrooms.html">Грибы</a>
+        <a href="nutrition.html">О питании</a>
+    </nav>
+    
+    <main class="product-page">
+        <div class="fruit-welcome">
+            <div class="welcome-header">
+                <h2 class="welcome-title">Добро пожаловать в мир сочных, ароматных и полезных фруктов!</h2>
+                <p class="welcome-subtitle">Наш сайт – это настоящая энциклопедия для всех, кто ценит натуральные витамины, яркие вкусы и пользу для здоровья.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🍎</div>
+                    <h3 class="feature-title">Широкий ассортимент</h3>
+                    <p class="feature-text">От классических яблок и апельсинов до экзотических манго, питахайи и личи</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌞</div>
+                    <h3 class="feature-title">Сезонные предложения</h3>
+                    <p class="feature-text">Только самые спелые и свежие фрукты прямо с плантаций</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3 class="feature-title">Польза для здоровья</h3>
+                    <p class="feature-text">Узнайте о витаминах, минералах и уникальных свойствах каждого фрукта</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3 class="feature-title">Рецепты и советы</h3>
+                    <p class="feature-text">Как выбрать, хранить и готовить вкуснейшие десерты, смузи и салаты</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="text-align: center; margin-bottom: 1.5rem; color: #2e7d32;">Наши свежие фрукты</h2>
+        
+        <div class="product-grid">
+            <!-- Карточка яблок -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="apple.jpg" alt="Свежие яблоки" class="product-image">
+                    <span class="product-badge">Хит продаж</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Яблоки Голден</h3>
+                    <p class="product-description">Сочные сладкие яблоки с медовым вкусом и хрустящей мякотью. Идеальны для перекуса, выпечки и фруктовых салатов.</p>
+                    <div class="product-price">129 ₽/кг</div>
+                    <div class="product-meta">
+                        <span>В наличии: 25 кг</span>
+                        
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">В корзину</button>
+                        <button class="btn btn-secondary">В избранное</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка бананов -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="banana.jpg" alt="Спелые бананы" class="product-image">
+                    <span class="product-badge">Акция</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Бананы Эквадор</h3>
+                    <p class="product-description">Спелые сладкие бананы с нежной мякотью. Богаты калием и другими полезными микроэлементами. Отличный источник энергии.</p>
+                    <div class="product-price">89 ₽/кг</div>
+                    <div class="product-meta">
+                        <span>В наличии: 18 кг</span>
+                        
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">В корзину</button>
+                        <button class="btn btn-secondary">В избранное</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Можно добавить больше карточек по аналогии -->
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Яблочный рай. Все права защищены.</p>
+    </footer>
+</body>
+</html>

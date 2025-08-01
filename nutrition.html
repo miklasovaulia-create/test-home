@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О питании - FreshHarvest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+        
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            margin: 0 0.5rem;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #4CAF50;
+            border-radius: 4px;
+        }
+        
+        .nutrition-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .nutrition-info {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nutrition-info h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .tip-card {
+            background-color: #e8f5e9;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .tip-card h3 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+        
+        ol, ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Стили для формы обратной связи */
+        .contact-form {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3d8b40;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nutrition-page {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .logo {
+                height: 50px;
+                margin-bottom: 0.5rem;
+            }
+            
+            nav a {
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Логотип FreshHarvest" class="logo">
+        <div class="header-text">
+            <h1>Яблочный мир</h1>
+            <p>Свежие продукты для здорового питания</p>
+        </div>
+    </header>
+    
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="fruits.html">Фрукты</a>
+        <a href="vegetables.html">Овощи</a>
+        <a href="mushrooms.html">Грибы</a>
+        <a href="nutrition.html">О питании</a>
+    </nav>
+    
+    <main class="nutrition-page">
+        <section class="nutrition-info">
+            <h2>Правильное питание – основа здоровья</h2>
+            
+            <div class="tip-card">
+                <h3>5 принципов здорового питания:</h3>
+                <ol>
+                    <li>Ешьте больше свежих овощей и фруктов</li>
+                    <li>Выбирайте цельнозерновые продукты</li>
+                    <li>Ограничьте потребление сахара и соли</li>
+                    <li>Пейте достаточное количество воды</li>
+                    <li>Соблюдайте режим питания</li>
+                </ol>
+            </div>
+            
+            <h3>Польза наших продуктов:</h3>
+            <p>Фрукты, овощи и грибы из нашего ассортимента:</p>
+            <ul>
+                <li>Выращены в экологически чистых условиях без пестицидов</li>
+                <li>Содержат максимум витаминов, минералов и антиоксидантов</li>
+                <li>Собираются на пике зрелости для лучшего вкуса</li>
+                <li>Быстро доставляются к вашему столу для сохранения свежести</li>
+            </ul>
+            
+            <div class="tip-card">
+                <h3>Совет от диетолога:</h3>
+                <p>"Сбалансированный рацион, богатый свежими овощами и фруктами - это залог здоровья, энергии и долголетия. Старайтесь, чтобы половину вашей тарелки занимали растительные продукты."</p>
+            </div>
+        </section>
+        
+        <section class="contact-form">
+            <h2>Обратная связь</h2>
+            <p>Есть вопросы о здоровом питании? Напишите нам!</p>
+            
+            <form action="mailto:info@freshharvest.ru" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Ваш email:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Тема сообщения:</label>
+                    <select id="subject" name="subject" class="form-control" required>
+                        <option value="">Выберите тему</option>
+                        <option value="question">Вопрос о продуктах</option>
+                        <option value="advice">Консультация по питанию</option>
+                        <option value="feedback">Отзыв или предложение</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Ваше сообщение:</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Яблочный мир. Все права защищены.</p>
+    </footer>
+</body>
+</html>
